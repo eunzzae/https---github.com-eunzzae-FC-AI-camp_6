@@ -23,7 +23,9 @@ def crawl_naver(category, data, page):
         except IndexError:
             title = (tags[2].select('a')[1].text.strip() #사진이 없는 기사들은 1번째 a태그
         writing=tag.select('.writing')[0].text # 기사 신문사
-        result.append([title, writing])
+        content=tag.select('.lead')[0].text
+        date=tag.select('.date')[0].text
+        result.append([title, writing, content, date])
     # 5. csv로 저장하는 작업 진행
     with open('news.csv','a', encoding='utf-8-sig') as f:
         writer = csv.writer(f) # 쓰기 위한 객체 생성
