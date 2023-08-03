@@ -1,0 +1,21 @@
+#실습
+import requests
+from bs4 import BeautifulSoup
+
+def crawl_naver(category, data, page):
+    # 1. get 요청 보내고 (headers를 포함해서 보안을 우회 - 내가 브라우저로 접근하는게 맞다고 해줌)
+    headers = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'}
+    response = requests.get(f'https://news.naver.com/main/list.naver?mode=LSD&mid=sec&sid1={category}103', headers=headers)
+    #필수적***** -> 응답 제대로 왔는지 확인 필요(브라우저상 html과 파이썬상 응답이 동일할거란 보장없음)
+
+    # 2. 응답(문자열) -> html 구조로 변환
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    # 3. 변환한 그 데이터에서 .select 써서 원하는 태그 추출
+    tags = soup.select('.type06_headline li')
+
+    # 4. 그 태그에서 글자만 추출하는 가공 작업 진행(파이썬의 영억) 
+    print(tags[2].select('a')[1].text.strip())
+
+crawl_naver(105, 20230103, 1)
+
