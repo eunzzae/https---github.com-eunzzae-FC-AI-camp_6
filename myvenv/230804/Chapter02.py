@@ -8,11 +8,11 @@ from bs4 import BeautifulSoup
 driver = webdriver.Chrome()
 driver.get('https://www.melon.com/chart/month/index.htm')
 # 월 선택 부분 클릭 
-month_selector = driver.find_element(By.CSS_SELECTOR, '#conts > div.calendar_prid > div > button')
+month_selector = driver.find_element(By.CSS_SELECTOR, '#conts > div.calendar_prid > div > button') # 월 선택 버튼의 html문서를 복붙하기
 month_selector.click()
 
 # 특정 월을 클릭하고 곡 데이터를 출력하는 부분은 각 월마다 반복
-for i in range(1, 6) : # 1~6까지 반복
+for i in range(1, 7) : # 1~6까지 반복
     month_element = driver.find_element(By.CSS_SELECTOR, f'#conts > div.calendar_prid > div > div > dl > dd.month_calendar > ul > li:nth-child({i}) > a')
     month_element.click()
     
