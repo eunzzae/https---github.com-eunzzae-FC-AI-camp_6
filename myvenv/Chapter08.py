@@ -13,8 +13,8 @@ soup = BeautifulSoup(response.text, 'html.parser')
 
 titles = soup.select('.lst50 .rank01 a')
 artists = soup.select('.lst50 .rank02 > a')
-music_list = [['제목', '가수']]
-    
+
+music_list = [['제목', '가수']]    
 for i in range(50):
     music_list.append([titles[i].text, artists[i].text])
 with open('melon_chart.csv', 'a', encoding='utf-8-sig') as f:
