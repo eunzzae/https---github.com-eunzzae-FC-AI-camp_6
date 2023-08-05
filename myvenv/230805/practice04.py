@@ -49,3 +49,13 @@
 # lotto_num.sort()
 # for num in lotto_num:
 #     print(num, end=" ")
+
+# def prc1(x):
+#     for i in range(1,11):
+#         print(x*i)
+        
+def prc2(num):
+    sum = 0
+	for i in range(1, 11):
+		sum += num * i
+	return sum
