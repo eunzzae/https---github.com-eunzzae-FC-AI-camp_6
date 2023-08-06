@@ -21,7 +21,7 @@ def crawl_naver(category, data, page):
         try:
             title=tags[2].select('a')[1].text.strip() #사진이 있는 기사들은 2번째 a태그
         except IndexError:
-            title = (tags[2].select('a')[1].text.strip() #사진이 없는 기사들은 1번째 a태그
+            title = (tags[2].select('a')[1].text.strip()) #사진이 없는 기사들은 1번째 a태그
         writing=tag.select('.writing')[0].text # 기사 신문사
         content=tag.select('.lead')[0].text
         date=tag.select('.date')[0].text
