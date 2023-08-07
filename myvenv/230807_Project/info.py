@@ -6,11 +6,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 
-# 3. 실시간 미세먼지 라이브러리
+# 2. 날씨 알림 라이브러리
 import requests
 import json
 
-# 1. 네이버 검색 기능 구현
+# # 1. 네이버 검색 기능 구현
 # # 크롬 드라이버 파일 경로 
 # driver = webdriver.Chrome()
 # # 네이버 크롬 브라우저에 접근할 것을 지정
@@ -18,6 +18,7 @@ import json
 # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#query')))
 # # 검색창 요소 특정
 # search_input = driver.find_element(By.CSS_SELECTOR, '#query')
+# # key 값을 지정해주는 명령어 등록해야함 *** 
 # search_input.send_keys(f'{search_name}')
 # #검색 버튼 특정
 # search_button = driver.find_element(By.CSS_SELECTOR, '#search-btn')
@@ -51,12 +52,15 @@ print(f"{address}의 날씨 상태는 {weather_Status} 입니다.")
 
 # 공기 
 air= soup.find('ul',{'class':'today_chart_list'})
-infos = air.find_all('li',{'class':'item_today'}) 
+infos = air.find_all('li',{'class':'item_today'})
+fine_dust = infos[0].find('',{'':''})
+fine_ultra_dust = infos[0].find('',{'':''}) 
+fine_ozone = infos[0].find('',{'':''})
 
 for info in infos:
     print(info.text.strip())
 
-# 시간대별 날씨 정보
+# # 시간대별 날씨 정보
 # weather_Time = soup.find_all('li',{'class':'_li'})
 # for i in weather_Time:
 #     print(i.text.strip())
