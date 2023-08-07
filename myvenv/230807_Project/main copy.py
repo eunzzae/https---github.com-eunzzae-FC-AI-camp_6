@@ -10,18 +10,14 @@ def speak(text):
 
 import speech_recognition as sr
 from tts import speak
-# tts.py 에 작성한 speak 함수 불러오기
 
-# 인식을 위한 객체 생성
 r = sr.Recognizer()
-mic = sr.Microphone()
 
-while True:
+with sr.Microphone() as source: # 마이크에 담긴 소리를 토대로 아래 코드 실행
+    print('인식 중...')
+    audio = r.listen(source, timeout=5, phrase_time_limit=5) # 해당 소리를 오디오 파일 형태로 변환
     try:
-        with mic as source: # 마이크에 담긴 소리를 토대로 아래 코드 실행
-            print('인식 중...')
-            audio = r.listen(source, timeout=5, phrase_time_limit=5) # 해당 소리를 오디오 파일 형태로 변환
-            result = r.recognize_google(audio, language = "ko-KR") # 오디오를 토대로 음성 인식
+        result = r.recognize_google(audio, language = "ko-KR") # 오디오를 토대로 음성 인식
         if "고비스" in result or "오피스" in result or "모비스" in result:
             speak("네")   
         elif result == '안녕': # 안녕이라고 말했으면
@@ -40,5 +36,5 @@ while True:
         speak("서버 에러 발생")
     except sr.WaitTimeoutError:
         speak("인식 실패")
-    print(result)
+
     
