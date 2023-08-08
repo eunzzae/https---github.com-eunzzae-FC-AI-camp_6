@@ -21,6 +21,7 @@ def naver(x):
     search_button = driver.find_element(By.CSS_SELECTOR, '#search-btn')
     search_button.click()
     html = driver.page_source
+    time.sleep(10)
     driver.quit()
     
     soup = BeautifulSoup(html, 'html.parser')
