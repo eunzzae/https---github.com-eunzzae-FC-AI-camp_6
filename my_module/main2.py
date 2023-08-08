@@ -1,8 +1,9 @@
 # import pyttsx3
 # import datetime
 # import speechRecognition as sr
-# import search_naver
 # import webbrowser
+# import naver
+# import weather_func
 
 # engine = pyttsx3.init('sapi5')
 # voices = engine.getProperty('voices') # 목소리를 세세하게 전달

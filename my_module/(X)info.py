@@ -10,25 +10,25 @@
 # import requests
 # import json
 
-# # # 1. 네이버 검색 기능 구현
-# # # 크롬 드라이버 파일 경로 
-# # driver = webdriver.Chrome()
-# # # 네이버 크롬 브라우저에 접근할 것을 지정
-# # driver.get('https://naver.com')
-# # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#query')))
-# # # 검색창 요소 특정
-# # search_input = driver.find_element(By.CSS_SELECTOR, '#query')
-# # # key 값을 지정해주는 명령어 등록해야함 *** 
-# # search_input.send_keys(f'{search_name}')
-# # #검색 버튼 특정
-# # search_button = driver.find_element(By.CSS_SELECTOR, '#search-btn')
-# # search_button.click()
-# # html = driver.page_source
-# # driver.quit()
+# # 1. 네이버 검색 기능 구현
+# # 크롬 드라이버 파일 경로 
+# driver = webdriver.Chrome()
+# # 네이버 크롬 브라우저에 접근할 것을 지정
+# driver.get('https://naver.com')
+# WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#query')))
+# # 검색창 요소 특정
+# search_input = driver.find_element(By.CSS_SELECTOR, '#query')
+# # key 값을 지정해주는 명령어 등록해야함 *** 
+# search_input.send_keys(f'{search_name}')
+# #검색 버튼 특정
+# search_button = driver.find_element(By.CSS_SELECTOR, '#search-btn')
+# search_button.click()
+# html = driver.page_source
+# driver.quit()
 
-# # soup = BeautifulSoup(html, 'html.parser')
-# # a_elements = soup.select('a')
-# # print(a_elements)
+# soup = BeautifulSoup(html, 'html.parser')
+# a_elements = soup.select('a')
+# print(a_elements)
 
 # # 2. 실시간 날씨 알림 기능 구현
 # html = requests.get(f'https://search.naver.com/search.naver?query=영등포+날씨')
